@@ -1,4 +1,6 @@
 <script>
+    import Nested from "../components/Nested.svelte";
+
     let name = "서상진 서벌트 테스트";
     let htmlName = "<span style='color:green';>서상진 todo!! </span>";
     let src =
@@ -7,6 +9,13 @@
     function increaseCount() {
         count++;
     }
+
+    $: if (count > 5) {
+        alert("count: 5보다 클수없습니다");
+        count = 5;
+    }
+    // watch vlaue
+    $: sum = count * 2;
 </script>
 
 <style>
@@ -14,6 +23,10 @@
 
 <button type="button" on:click={increaseCount}>Count</button>
 <div>Count : {count}</div>
+<div>Sum : {sum}</div>
+
+<Nested name2={name} />
+
 <h1>Hello {name}</h1>
 <h1>
     Hello
